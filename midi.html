@@ -23,20 +23,11 @@
 
 	<script type="text/javascript">
 
-function loadJson() {
-        return fetch("https://raw.githubusercontent.com/kazado/tonejsmidijson/main/bach_846.json")
-            .then(response => response.json());
-    }
+		
+		Midi.fromUrl("https://raw.githubusercontent.com/kazado/tonejsmidijson/main/bach_846.mid").then(midi => {
 
-	loadJson().then(data => {
-        Midi.fromJSON(data).then(midi => {
-            document.querySelector('tone-play-toggle').removeAttribute('disabled');
-            document.querySelector('#Status').textContent = '';
-
-		// Midi.fromUrl("https://raw.githubusercontent.com/kazado/tonejsmidijson/main/bach_846.mid").then(midi => {
-
-		// 	document.querySelector('tone-play-toggle').removeAttribute('disabled')
-		// 	document.querySelector('#Status').textContent = ''
+			document.querySelector('tone-play-toggle').removeAttribute('disabled')
+			document.querySelector('#Status').textContent = ''
 
 			//synth playback
 			const synths = []
