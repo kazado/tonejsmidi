@@ -5,7 +5,6 @@
 	<script type="text/javascript" src="https://unpkg.com/@tonejs/midi"></script>
 	<script type="text/javascript" src="https://unpkg.com/tone@13.4.9"></script>
 	<script type="text/javascript" src="https://unpkg.com/@tonejs/ui@0.0.8"></script>
-	<script type="text/javascript" src="path/to/your/json-loader.js"></script>
 </head>
 <body>
 	<style>
@@ -24,10 +23,20 @@
 
 	<script type="text/javascript">
 
-		Midi.fromUrl("https://raw.githubusercontent.com/kazado/tonejsmidijson/main/bach_846.mid").then(midi => {
+function loadJson() {
+        return fetch("https://raw.githubusercontent.com/<your-username>/<repository-name>/main/bach_846.json")
+            .then(response => response.json());
+    }
 
-			document.querySelector('tone-play-toggle').removeAttribute('disabled')
-			document.querySelector('#Status').textContent = ''
+	loadJson().then(data => {
+        Midi.fromJSON(data).then(midi => {
+            document.querySelector('tone-play-toggle').removeAttribute('disabled');
+            document.querySelector('#Status').textContent = '';
+
+		// Midi.fromUrl("https://raw.githubusercontent.com/kazado/tonejsmidijson/main/bach_846.mid").then(midi => {
+
+		// 	document.querySelector('tone-play-toggle').removeAttribute('disabled')
+		// 	document.querySelector('#Status').textContent = ''
 
 			//synth playback
 			const synths = []
