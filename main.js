@@ -8,13 +8,11 @@ function createSynth() {
         }
     }).toMaster();
 }
-
-
 function loadJson() {
     return fetch("https://raw.githubusercontent.com/kazado/tonejsmidijson/main/myfile.json")
         .then(response => response.json());
 }
-
+loadJson().then(data => {
     Midi.fromUrl("https://raw.githubusercontent.com/kazado/tonejsmidijson/main/bach_846.mid").then(midi => {
 
         document.querySelector('tone-play-toggle').removeAttribute('disabled')
@@ -43,4 +41,5 @@ function loadJson() {
                 }
             }
         })
+    })
     })
