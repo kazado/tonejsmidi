@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tonejs Midi</title>
+	<script type="text/javascript" src="https://unpkg.com/@tonejs/midi"></script>
+	<script type="text/javascript" src="https://unpkg.com/tone@13.4.9"></script>
+	<script type="text/javascript" src="https://unpkg.com/@tonejs/ui@0.0.8"></script>
+</head>
+<body>
+	<style>
+		#Status {
+			color: gray;
+			height: 40px;
+		}
+	</style>
+	<tone-top-bar></tone-top-bar>
+
+	<tone-content>
+		<div id="Description">Load and play Bach's <i>Prelude in C</i></div>
+		<div id="Status">Loading...</div>
+		<tone-play-toggle disabled>Loading...</tone-play-toggle>
+	</tone-content>
+
+	<script type="text/javascript" src="path/to/main.js"></script>
+
+</body>
+</html>
