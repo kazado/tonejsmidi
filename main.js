@@ -1,3 +1,15 @@
+function createSynth() {
+    return new Tone.PolySynth(10, Tone.Synth, {
+        envelope: {
+            attack: 0.02,
+            decay: 0.1,
+            sustain: 0.3,
+            release: 1
+        }
+    }).toMaster();
+}
+
+
 function loadJson() {
     return fetch("https://raw.githubusercontent.com/kazado/tonejsmidijson/main/myfile.json")
         .then(response => response.json());
@@ -16,14 +28,7 @@ function loadJson() {
                 const now = Tone.now() + 0.5
                 midi.tracks.forEach(track => {
                     //create a synth for each track
-                    const synth = new Tone.PolySynth(10, Tone.Synth, {
-                        envelope: {
-                            attack: 0.02,
-                            decay: 0.1,
-                            sustain: 0.3,
-                            release: 1
-                        }
-                    }).toMaster()
+                    const synth = createSynth();
                     synths.push(synth)
                     //schedule all of the events
                     track.notes.forEach(note => {
