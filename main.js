@@ -1,4 +1,4 @@
-function createSynth() {
+async function createSynth() {
     return new Tone.PolySynth(10, Tone.Synth, {
         envelope: {
             attack: 0.02,
@@ -8,38 +8,41 @@ function createSynth() {
         }
     }).toMaster();
 }
-function loadJson() {
-    return fetch("https://raw.githubusercontent.com/kazado/tonejsmidijson/main/myfile.json")
-        .then(response => response.json());
+
+async function loadJson() {
+    const response = await fetch("https://raw.githubusercontent.com/kazado/tonejsmidijson/main/myfile.json");
+    return response.json();
 }
-loadJson().then(data => {
-    Midi.fromUrl("https://raw.githubusercontent.com/kazado/tonejsmidijson/main/bach_846.mid").then(midi => {
 
-        document.querySelector('tone-play-toggle').removeAttribute('disabled')
-        document.querySelector('#Status').textContent = ''
+function startPlayback() {
+    const startButton = document.getElementById('startButton');
+    startButton.addEventListener('click', () => {
+    Tone.start();
+    loadJson().then(jsonData => {
 
-        //synth playback
-        const synths = []
-        document.querySelector('tone-play-toggle').addEventListener('play', (e) => {
-            const playing = e.detail
-            if (playing) {
-                const now = Tone.now() + 0.5
-                midi.tracks.forEach(track => {
-                    //create a synth for each track
-                    const synth = createSynth();
-                    synths.push(synth)
-                    //schedule all of the events
-                    track.notes.forEach(note => {
-                        synth.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity)
-                    })
+    document.querySelector('tone-play-toggle').removeAttribute('disabled')
+    document.querySelector('#Status').textContent = ''
+
+    const synths = []
+    document.querySelector('tone-play-toggle').addEventListener('play', (e) => {
+        const playing = e.detail
+        if (playing) {
+            const now = Tone.now() + 0.5
+            jsonData.tracks.forEach(track => {
+                const synth = createSynth();
+                synths.push(synth)
+                track.notes.forEach(note => {
+                    synth.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity)
                 })
-            } else {
-                //dispose the synth and make a new one
-                while (synths.length) {
-                    const synth = synths.shift()
-                    synth.dispose()
-                }
+            })
+        } else {
+            while (synths.length) {
+                const synth = synths.shift()
+                synth.dispose()
             }
-        })
-    })
-    })
+        }
+    });
+});
+});
+}
+document.getElementById('startButton').addEventListener('click', startPlayback);
