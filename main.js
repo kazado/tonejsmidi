@@ -1,4 +1,6 @@
-async function createSynth() {
+
+
+function createSynth() {
     return new Tone.PolySynth(10, Tone.Synth, {
         envelope: {
             attack: 0.02,
@@ -11,7 +13,11 @@ async function createSynth() {
 
 async function loadJson() {
     const response = await fetch("https://raw.githubusercontent.com/kazado/tonejsmidijson/main/myfile.json");
-    return response.json();
+    const jsonData = await response.json();
+    
+    console.log(jsonData); 
+
+    return jsonData;
 }
 
 function startPlayback() {
