@@ -1,5 +1,3 @@
-
-
 function createSynth() {
     return new Tone.PolySynth(10, Tone.Synth, {
         envelope: {
