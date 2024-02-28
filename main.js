@@ -9,13 +9,39 @@ function createSynth() {
     }).toMaster();
 }
 
-async function loadJson() {
-    const response = await fetch("https://raw.githubusercontent.com/kazado/tonejsmidijson/main/myfile.json");
-    const jsonData = await response.json();
-    
-    console.log(jsonData); 
+async function generateMidiJson() {
 
-    return jsonData;
+    const apiKey = '';
+    const prompt = 'Generate JSON data for a music piece';
+
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            model : 'gpt-3.5-turbo-1106',
+            prompt: prompt,
+            max_tokens: 500,  
+        }),
+    });
+
+    const jsonData = await response.json();
+    console.log(jsonData.choices[0].text);
+
+    return JSON.parse(jsonData.choices[0].text);
+}
+
+async function loadJson() {
+    // const response = await fetch("https://raw.githubusercontent.com/kazado/tonejsmidijson/main/myfile.json");
+    // const jsonData = await response.json();
+    
+    // console.log(jsonData); 
+
+    // return jsonData;
+    const openaiGeneratedJson = await generateMidiJson();
+    return openaiGeneratedJson;
 }
 
 function startPlayback() {
