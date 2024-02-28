@@ -7,7 +7,7 @@ This project is a simple web application that uses Tone.js to load and play Bach
 - `index.html`: The main HTML file that includes the necessary scripts and sets up the user interface.
 - `main.js`: The JavaScript file containing the code for loading the MIDI and JSON files, and setting up the Tone.js player.
 - `bach_846.mid`: The MIDI file for Bach's "Prelude in C."
-- `bach_846.json`: The JSON representation of the MIDI file.
+- `myfile.json`: The JSON representation of the MIDI file.
 
 ## Getting Started
 
