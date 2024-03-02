@@ -1,6 +1,6 @@
 # Tone.js MIDI Player
 
-This project is a simple web application that uses Tone.js to load and play Bach's "Prelude in C" MIDI file. The project includes a MIDI file (`bach_846.mid`), its corresponding JSON representation (`bach_846.json`), and a basic HTML/JavaScript setup to play the MIDI file using Tone.js.
+This project is a simple web application that uses Tone.js to load and play Bach's "Prelude in C" MIDI file. The project includes a MIDI file (`bach_846.mid`), its corresponding JSON representation (`myfile.json`), and a basic HTML/JavaScript setup to play the MIDI file using Tone.js.
 
 ## Project Structure
 
