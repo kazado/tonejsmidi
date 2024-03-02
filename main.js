@@ -12,10 +12,10 @@ function createSynth() {
 async function generateMidiJson() {
 
     const url = 'https://api.openai.com/v1/chat/completions'
-    const apiKey = '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';
+    const apiKey = 'sk-YPvZ3zisgTLvowusU634T3B1bkFJWQRv1n1AOLLnhV97NzTc';
     const bearer = 'Bearer ' + apiKey
     let prompt = [
-        { role: "system", content: "You are composer of classical music. You generate midi scores in json notation tht can be played back by Tone.js." },
+        { role: "system", content: "You are composer of classical music. You generate midi scores in json notation that can be played back by Tone.js." },
         { role: "assistant", content: "Generate a Bach Chorale" }
     ];
     console.log(prompt)
