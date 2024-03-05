@@ -12,7 +12,7 @@ function createSynth() {
 async function generateMidiJson() {
 
     const url = 'https://api.openai.com/v1/chat/completions'
-    const apiKey = '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';
+    const apiKey = '';
     const bearer = 'Bearer ' + apiKey
     let prompt = [
         { role: "system", content: "You are composer of classical music. You generate midi scores in json notation that can be played back by Tone.js." },
@@ -47,39 +47,40 @@ async function generateMidiJson() {
 }
 
 async function loadJson() {
-    // const response = await fetch("https://raw.githubusercontent.com/kazado/tonejsmidijson/main/myfile.json");
-    // const jsonData = await response.json();
-
-    // console.log(jsonData); 
-
-    // return jsonData;
     const openaiGeneratedJson = await generateMidiJson();
     return openaiGeneratedJson;
 }
 
 function startPlayback() {
     Tone.start();
-    loadJson().then(jsonData => {
+    
+    loadJson().then(openaiGeneratedJson => {
+        const synths = [];
 
-        document.querySelector('tone-play-toggle').removeAttribute('disabled')
-        document.querySelector('#Status').textContent = ''
+        document.querySelector('tone-play-toggle').removeAttribute('disabled');
+        document.querySelector('#Status').textContent = '';
 
-        const synths = []
         document.querySelector('tone-play-toggle').addEventListener('play', (e) => {
-            const playing = e.detail
+            const playing = e.detail;
+
             if (playing) {
-                const now = Tone.now() + 0.5
-                jsonData.tracks.forEach(track => {
+                const now = Tone.now() + 0.5;
+
+                openaiGeneratedJson.tracks.forEach(track => {
                     const synth = createSynth();
-                    synths.push(synth)
+                    synths.push(synth);
+
                     track.notes.forEach(note => {
-                        synth.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity)
-                    })
-                })
+                        const startTime = note.startTime + now;
+                        const duration = note.duration;
+
+                        synth.triggerAttackRelease(note.pitch, duration, startTime);
+                    });
+                });
             } else {
                 while (synths.length) {
-                    const synth = synths.shift()
-                    synth.dispose()
+                    const synth = synths.shift();
+                    synth.dispose();
                 }
             }
         });
