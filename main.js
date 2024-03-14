@@ -1,3 +1,30 @@
+async function generateCode() {
+    const promptText = document.getElementById('prompt').value;
+    let prompt = [
+      { role: "system", content: "You write js code that ends with a console.log of the result. do not include markdown formatting, and do not include the string javascript at the beginning of the code. do not enclose the code in quotes" },
+      { role: "assistant", content: promptTesxt }
+  ];
+    const apiKey = ''; 
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo-1106',
+        messages: prompt,
+        max_tokens: 500,
+      })
+    });
+    const data = await response.json();
+    const generatedCode = data.choices[0].message.content;
+    console.log(generatedCode); 
+    document.getElementById('output').innerText = JSON.stringify(generatedCode, null, 2);
+    console.log("result");
+    console.log(eval(generatedCode));
+  }
+
 function createSynth() {
     return new Tone.PolySynth(10, Tone.Synth, {
         envelope: {
@@ -15,8 +42,8 @@ async function generateMidiJson() {
     const apiKey = '';
     const bearer = 'Bearer ' + apiKey
     let prompt = [
-        { role: "system", content: "You are composer of classical music. You generate midi scores in json notation that can be played back by Tone.js." },
-        { role: "assistant", content: "Generate a Bach Chorale" }
+        { role: "system", content: "You are a composer of classical music. You generate midi scores in json notation that can be played back by Tone.js." },
+        { role: "assistant", content: "Generate json music" }
     ];
     console.log(prompt)
     console.log(bearer)
@@ -46,15 +73,31 @@ async function generateMidiJson() {
     return JSON.parse(data.choices[0].message.content);
 }
 
-async function loadJson() {
-    const openaiGeneratedJson = await generateMidiJson();
-    return openaiGeneratedJson;
+var generateMidi = 0
+
+async function loadJson(generateMidi) {
+    console.log(generateMidi);
+    var bool = true;
+    if (generateMidi == 0) {
+        bool = true
+    } else {
+        bool = false
+    }
+    
+    const openaiGeneratedJson = await (bool ? generateMidiJson() : generateCode());
+  return openaiGeneratedJson;
 }
+
+document.getElementById('startButton').addEventListener('click', () => {
+  generateMidi = document.getElementById('slider').value;
+  console.log(generateMidi);
+  startPlayback(generateMidi);
+});
 
 function startPlayback() {
     Tone.start();
     
-    loadJson().then(openaiGeneratedJson => {
+    loadJson(generateMidi).then(openaiGeneratedJson => {
         const synths = [];
 
         document.querySelector('tone-play-toggle').removeAttribute('disabled');

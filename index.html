@@ -12,15 +12,42 @@
 			color: gray;
 			height: 40px;
 		}
+
+		body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  margin: 50px auto;
+  text-align: center;
+}
+
+.slider {
+  margin-bottom: 20px;
+}
+
+.slider-input {
+  width: 200px;
+}
+
+#Status {
+  margin-top: 20px;
+  font-style: italic;
+}
 	</style>
 	<tone-top-bar></tone-top-bar>
 
 	<tone-content>
 		<div id="Status">Loading...</div>
-		<button id="startButton">Start Playback</button>
 		<tone-play-toggle disabled>Loading...</tone-play-toggle>
 	</tone-content>
-
+	<div class="slider">
+		<input type="range" min="0" max="1" step="1" value="0" id="slider">
+        <button id="startButton">Start Generation</button>
+	  </div>
+	  <textarea id="prompt" rows="5" cols="50">Write a function in js that generates MIDI files in json format</textarea><br>
+  <h2>Output:</h2>
+  <pre id="output"></pre>
 	<script type="text/javascript" src="./main.js"></script>
 
 </body>
