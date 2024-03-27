@@ -1,8 +1,7 @@
 async function generateCode() {
-    const promptText = document.getElementById('prompt').value;
     let prompt = [
-      { role: "system", content: "You write js code that ends with a console.log of the result. do not include markdown formatting, and do not include the string javascript at the beginning of the code. do not enclose the code in quotes" },
-      { role: "assistant", content: promptTesxt }
+      { role: "system", content: "You write js code that ends with a return of the result. call the function at the end. do not include comments. do not include markdown formatting, and do not include the string javascript at the beginning of the code. do not enclose the code in quotes. You're tasked with creating a JavaScript function that generates a MIDI score in JSON format, playable by Tone.js. The function should return the MIDI score as a JSON object. Make sure the JSON structure is compatible with Tone.js for playback." },
+      { role: "assistant", content: "Write a function in js with a midi score with notes labelled as tracks including pitch, duration, startTime in json notation. The duration and startTime should be numerical integers."}
   ];
     const apiKey = ''; 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -20,9 +19,9 @@ async function generateCode() {
     const data = await response.json();
     const generatedCode = data.choices[0].message.content;
     console.log(generatedCode); 
-    document.getElementById('output').innerText = JSON.stringify(generatedCode, null, 2);
-    console.log("result");
     console.log(eval(generatedCode));
+    return(eval(generatedCode));
+
   }
 
 function createSynth() {
@@ -69,7 +68,6 @@ async function generateMidiJson() {
     console.log(data);
 
     console.log(data.choices[0].message.content);
-    console.log(data);
     return JSON.parse(data.choices[0].message.content);
 }
 
@@ -77,14 +75,14 @@ var generateMidi = 0
 
 async function loadJson(generateMidi) {
     console.log(generateMidi);
-    var bool = true;
+    var directGen = true;
     if (generateMidi == 0) {
-        bool = true
+        directGen = true
     } else {
-        bool = false
+        directGen = false
     }
     
-    const openaiGeneratedJson = await (bool ? generateMidiJson() : generateCode());
+    const openaiGeneratedJson = await (directGen ? generateMidiJson() : generateCode());
   return openaiGeneratedJson;
 }
 
@@ -129,4 +127,3 @@ function startPlayback() {
         });
     });
 }
-document.getElementById('startButton').addEventListener('click', startPlayback);

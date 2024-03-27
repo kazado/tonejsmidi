@@ -26,14 +26,12 @@
   margin-bottom: 20px;
 }
 
-.slider-input {
-  width: 200px;
-}
 
 #Status {
   margin-top: 20px;
   font-style: italic;
 }
+
 	</style>
 	<tone-top-bar></tone-top-bar>
 
@@ -41,13 +39,14 @@
 		<div id="Status">Loading...</div>
 		<tone-play-toggle disabled>Loading...</tone-play-toggle>
 	</tone-content>
+	<div class="slider-labels">
+        <span>Direct Generation | Code Generation</span>
+    </div>
 	<div class="slider">
 		<input type="range" min="0" max="1" step="1" value="0" id="slider">
-        <button id="startButton">Start Generation</button>
+        
 	  </div>
-	  <textarea id="prompt" rows="5" cols="50">Write a function in js that generates MIDI files in json format</textarea><br>
-  <h2>Output:</h2>
-  <pre id="output"></pre>
+	  <button id="startButton">Start Generation</button>
 	<script type="text/javascript" src="./main.js"></script>
 
 </body>
