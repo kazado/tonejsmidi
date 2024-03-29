@@ -9,6 +9,7 @@ This project utilizes OpenAI's GPT-3.5 model to generate MIDI scores in JSON not
      - `@tonejs/midi`
      - `tone@13.4.9`
      - `@tonejs/ui@0.0.8`
+    
      These dependencies are included via CDN links in the HTML file.
 
 2. **Setup:**
