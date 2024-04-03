@@ -18,7 +18,7 @@ This project utilizes OpenAI's GPT-3.5 model to generate MIDI scores in JSON not
 
 3. **Interface:**
    - The interface allows you to adjust between direct generation and code generation of MIDI music.
-   - Use the slider to select between direct generation (0) and code generation (1).
+   - Use the slider to select between direct generation and code generation.
    - Click the "Start Generation" button to initiate the MIDI generation process.
 
 4. **Playback:**
