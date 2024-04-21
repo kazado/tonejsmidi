@@ -2,6 +2,8 @@
 
 This project utilizes OpenAI's GPT-3.5 model to generate MIDI scores in JSON notation that can be played back using Tone.js. The generated JSON music score includes tracks with labeled notes containing pitch, duration, and startTime. The duration and startTime are represented as numerical integers.
 
+Try it here: https://kazado.github.io/tonejsmidijson/
+
 ## Instructions for Use:
 
 1. **Dependencies:**
