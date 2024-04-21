@@ -1,0 +1,28 @@
+function generateMIDIScore() {
+  const midiScore = {
+    "header": {
+      "ppq": 480,
+      "timeSignature": [4, 4],
+      "bpm": 120
+    },
+    "tracks": [
+      {
+        "notes": [
+          {"pitch": "C4", "duration": "8n", "startTime": 0},
+          {"pitch": "E4", "duration": "8n", "startTime": "8n"},
+          // Add more notes for the first hand
+        ]
+      },
+      {
+        "notes": [
+          {"pitch": "G4", "duration": "8n", "startTime": 0},
+          {"pitch": "B4", "duration": "8n", "startTime": "8n"},
+          // Add more notes for the second hand
+        ]
+      }
+    ]
+  };
+  return midiScore;
+}
+
+generateMIDIScore();

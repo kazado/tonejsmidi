@@ -1,0 +1,22 @@
+function generateMIDIScore() {
+  return {
+    "tracks": [
+      {
+        "notes": [
+          { "pitch": "C4", "duration": 4, "startTime": 0 },
+          { "pitch": "E4", "duration": 4, "startTime": 4 }
+        ]
+      },
+      {
+        "notes": [
+          { "pitch": "G4", "duration": 2, "startTime": 0 },
+          { "pitch": "A4", "duration": 2, "startTime": 2 },
+          { "pitch": "G4", "duration": 2, "startTime": 4 },
+          { "pitch": "F4", "duration": 2, "startTime": 6 }
+        ]
+      }
+    ]
+  };
+}
+
+generateMIDIScore();

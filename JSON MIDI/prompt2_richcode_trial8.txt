@@ -1,0 +1,33 @@
+function generateMIDIScore() {
+  let midiScore = {
+    tracks: [
+      {
+        notes: []
+      },
+      {
+        notes: []
+      },
+      {
+        notes: []
+      },
+      {
+        notes: []
+      }
+    ]
+  };
+
+  const chordProgression = [[60, 64, 67, 72], [62, 65, 69, 74], [64, 67, 71, 76], [60, 64, 67, 72]];
+  const startTime = [0, 2, 4, 6];
+
+  for (let i = 0; i < chordProgression.length; i++) {
+    for (let j = 0; j < 4; j++) {
+      const pitch = chordProgression[i][j] + Math.floor(Math.random() * 3 - 1);
+      const duration = Math.floor(Math.random() * 4) + 1;
+      midiScore.tracks[j].notes.push({ pitch: pitch, duration: duration, startTime: startTime[i] });
+    }
+  }
+
+  return midiScore;
+}
+
+generateMIDIScore();

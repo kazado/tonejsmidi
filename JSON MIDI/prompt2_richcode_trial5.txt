@@ -1,0 +1,21 @@
+function generateMIDIScore() {
+  const chordProgression = ['C', 'Am', 'F', 'G'];
+  const voices = ['soprano', 'alto', 'tenor', 'bass'];
+  const midiScore = { tracks: [] };
+
+  for (let i = 0; i < 4; i++) {
+    const notes = [];
+    let startTime = 0;
+    for (let j = 0; j < 16; j++) {
+      const pitch = Math.floor(Math.random() * 800) + 200;
+      const duration = Math.floor(Math.random() * 4) + 1;
+      notes.push({ pitch, duration, startTime });
+      startTime += duration;
+    }
+    midiScore.tracks.push({ notes, label: voices[i] });
+  }
+
+  return midiScore;
+}
+
+generateMIDIScore();

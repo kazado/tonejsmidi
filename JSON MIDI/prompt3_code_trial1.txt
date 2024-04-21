@@ -1,0 +1,44 @@
+function generateMIDIScore() {
+  const midiScore = {
+    "header": {
+      "PPQ": 480,
+      "timeSignature": [4, 4],
+      "tempos": [
+        {
+          "time": 0,
+          "bpm": 120
+        }
+      ]
+    },
+    "tracks": [
+      {
+        "notes": [
+          {"pitch": "C4", "startTime": 0, "duration": 2},
+          {"pitch": "E4", "startTime": 2, "duration": 2},
+          {"pitch": "G4", "startTime": 4, "duration": 2},
+          {"pitch": "B4", "startTime": 6, "duration": 2},
+          {"pitch": "C5", "startTime": 8, "duration": 2},
+          {"pitch": "B4", "startTime": 10, "duration": 2},
+          {"pitch": "G4", "startTime": 12, "duration": 2},
+          {"pitch": "E4", "startTime": 14, "duration": 2}
+        ]
+      },
+      {
+        "notes": [
+          {"pitch": "C3", "startTime": 0, "duration": 2},
+          {"pitch": "E3", "startTime": 0, "duration": 2},
+          {"pitch": "G3", "startTime": 4, "duration": 2},
+          {"pitch": "B3", "startTime": 4, "duration": 2},
+          {"pitch": "C4", "startTime": 8, "duration": 2},
+          {"pitch": "B3", "startTime": 8, "duration": 2},
+          {"pitch": "G3", "startTime": 12, "duration": 2},
+          {"pitch": "E3", "startTime": 12, "duration": 2}
+        ]
+      }
+    ]
+  };
+
+  return midiScore;
+}
+
+generateMIDIScore();

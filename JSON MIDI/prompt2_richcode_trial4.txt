@@ -1,0 +1,30 @@
+function generateMIDIScore() {
+  const midiScore = {
+    tracks: [
+      {
+        notes: [
+          { pitch: Math.floor(Math.random() * 900) + 100, duration: Math.floor(Math.random() * 4) + 1, startTime: 0 },
+          { pitch: Math.floor(Math.random() * 900) + 100, duration: Math.floor(Math.random() * 4) + 1, startTime: 1 },
+          { pitch: Math.floor(Math.random() * 900) + 100, duration: Math.floor(Math.random() * 4) + 1, startTime: 2 },
+          { pitch: Math.floor(Math.random() * 900) + 100, duration: Math.floor(Math.random() * 4) + 1, startTime: 3 }
+        ]
+      },
+      {
+        notes: [
+          { pitch: Math.floor(Math.random() * 900) + 100, duration: Math.floor(Math.random() * 4) + 1, startTime: 0 },
+          { pitch: Math.floor(Math.random() * 900) + 100, duration: Math.floor(Math.random() * 4) + 1, startTime: 1 },
+          { pitch: Math.floor(Math.random() * 900) + 100, duration: Math.floor(Math.random() * 4) + 1, startTime: 2 },
+          { pitch: Math.floor(Math.random() * 900) + 100, duration: Math.floor(Math.random() * 4) + 1, startTime: 3 }
+        ]
+      },
+      {
+        notes: [
+          { pitch: Math.floor(Math.random() * 900) + 100, duration: Math.floor(Math.random() * 4) + 1, startTime: 0 },
+          { pitch: Math.floor(Math.random() * 900) + 100, duration: Math.floor(Math.random() * 4) + 1, startTime: 1 },
+          { pitch: Math.floor(Math.random() * 900) + 100, duration: Math.floor(Math.random() * 4) + 1, startTime: 2 },
+          { pitch: Math.floor(Math.random() * 900) + 100, duration: Math.floor(Math.random() * 4) + 1, startTime: 3 }
+        ]
+      },
+      {
+        notes: [
+          {

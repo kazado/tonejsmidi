@@ -1,0 +1,33 @@
+function generateMIDIScore() {
+  const midiScore = {
+    header: {
+      bpm: 120,
+      timeSignature: [4, 4],
+      beatsPerBar: 4
+    },
+    tracks: [
+      {
+        instrument: "acoustic_grand_piano",
+        notes: [
+          { pitch: "C4", duration: "4n", startTime: 0 },
+          { pitch: "E4", duration: "8n", startTime: "4n" },
+          { pitch: "G4", duration: "8n", startTime: "4n" },
+          { pitch: "C5", duration: "4n", startTime: "2n" }
+        ]
+      },
+      {
+        instrument: "acoustic_grand_piano",
+        notes: [
+          { pitch: "G3", duration: "4n", startTime: 0 },
+          { pitch: "B3", duration: "8n", startTime: "4n" },
+          { pitch: "D4", duration: "8n", startTime: "4n" },
+          { pitch: "G4", duration: "4n", startTime: "2n" }
+        ]
+      }
+    ]
+  };
+  
+  return midiScore;
+}
+
+generateMIDIScore();

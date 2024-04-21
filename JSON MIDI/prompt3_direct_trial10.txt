@@ -1,0 +1,21 @@
+{
+  "tracks": [
+    {
+      "notes": [
+        {"pitch": "C4", "duration": 4, "startTime": 0},
+        {"pitch": "E4", "duration": 2, "startTime": 4},
+        {"pitch": "G4", "duration": 2, "startTime": 6},
+        {"pitch": "C5", "duration": 4, "startTime": 8}
+      ]
+    },
+    {
+      "notes": [
+        {"pitch": "A3", "duration": 3, "startTime": 0},
+        {"pitch": "C4", "duration": 1, "startTime": 3},
+        {"pitch": "E4", "duration": 3, "startTime": 4},
+        {"pitch": "G4", "duration": 1, "startTime": 7},
+        {"pitch": "C5", "duration": 4, "startTime": 8}
+      ]
+    }
+  ]
+}

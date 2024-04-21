@@ -1,0 +1,20 @@
+{
+  "tracks": {
+    "right_hand": {
+      "notes": [
+        {"pitch": "C4", "duration": 4, "startTime": 0},
+        {"pitch": "E4", "duration": 2, "startTime": 4},
+        {"pitch": "D4", "duration": 2, "startTime": 6},
+        {"pitch": "G4", "duration": 4, "startTime": 8}
+      ]
+    },
+    "left_hand": {
+      "notes": [
+        {"pitch": "A2", "duration": 4, "startTime": 0},
+        {"pitch": "B2", "duration": 2, "startTime": 4},
+        {"pitch": "G2", "duration": 2, "startTime": 6},
+        {"pitch": "D3", "duration": 4, "startTime": 8}
+      ]
+    }
+  }
+}

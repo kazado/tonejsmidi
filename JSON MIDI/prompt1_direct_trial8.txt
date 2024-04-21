@@ -1,0 +1,16 @@
+{
+  "track1": {
+    "notes": [
+      {"pitch": "C4", "duration": 100, "startTime": 0},
+      {"pitch": "E4", "duration": 100, "startTime": 100},
+      {"pitch": "G4", "duration": 100, "startTime": 200}
+    ]
+  },
+  "track2": {
+    "notes": [
+      {"pitch": "C3", "duration": 200, "startTime": 0},
+      {"pitch": "E3", "duration": 200, "startTime": 200},
+      {"pitch": "G3", "duration": 200, "startTime": 400}
+    ]
+  }
+}

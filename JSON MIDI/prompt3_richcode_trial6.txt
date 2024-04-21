@@ -1,0 +1,34 @@
+function generateMIDIScore() {
+  const score = {
+    tracks: [
+      {
+        notes: []
+      },
+      {
+        notes: []
+      }
+    ]
+  };
+
+  for (let i = 0; i < 16; i++) {
+    const randomPitch = Math.floor(Math.random() * 88) + 21; // MIDI notes range from 21 to 108
+    const randomDuration = Math.floor(Math.random() * 4) + 1; // Duration between 1 and 4
+    const randomStartTime = i * 0.5; // Syncopated rhythms
+
+    score.tracks[0].notes.push({
+      pitch: randomPitch,
+      duration: randomDuration,
+      startTime: randomStartTime
+    });
+
+    score.tracks[1].notes.push({
+      pitch: randomPitch + 12, // Play the note 1 octave higher
+      duration: randomDuration,
+      startTime: randomStartTime
+    });
+  }
+
+  return score;
+}
+
+generateMIDIScore();

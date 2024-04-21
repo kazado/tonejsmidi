@@ -1,0 +1,12 @@
+{
+  "tracks": [
+    {
+      "notes": [
+        {"pitch": "C4", "duration": 4, "startTime": 0},
+        {"pitch": "E4", "duration": 4, "startTime": 4},
+        {"pitch": "G4", "duration": 4, "startTime": 8},
+        {"pitch": "C5", "duration": 4, "startTime": 12}
+      ]
+    }
+  ]
+}

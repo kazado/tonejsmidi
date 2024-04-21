@@ -1,0 +1,54 @@
+function generateMIDIScore() {
+  const midiScore = {
+    tracks: [
+      {
+        notes: []
+      },
+      {
+        notes: []
+      },
+      {
+        notes: []
+      },
+      {
+        notes: []
+      }
+    ]
+  };
+
+  const chordProgression = ['C', 'G', 'Am', 'F', 'Em', 'Dm', 'G', 'C'];
+
+  for (let i = 0; i < chordProgression.length; i++) {
+    const startTime = i * 4;
+    const duration = Math.floor(Math.random() * 4) + 1;
+    const rootNote = (Math.floor(Math.random() * 7) + 1) * 100;
+    
+    midiScore.tracks[0].notes.push({
+      pitch: rootNote,
+      duration: duration,
+      startTime: startTime
+    });
+
+    midiScore.tracks[1].notes.push({
+      pitch: rootNote + (Math.floor(Math.random() * 12) * 10),
+      duration: duration,
+      startTime: startTime
+    });
+
+    midiScore.tracks[2].notes.push({
+      pitch: rootNote + (Math.floor(Math.random() * 12) * 15),
+      duration: duration,
+      startTime: startTime
+    });
+
+    midiScore.tracks[3].notes.push({
+      pitch: rootNote + (Math.floor(Math.random() * 12) * 5),
+      duration: duration,
+      startTime: startTime
+    });
+  }
+
+  return midiScore;
+}
+
+generateMIDIScore();

@@ -1,0 +1,60 @@
+function generateMIDIScore() {
+  const midiScore = {
+    tracks: [
+      {
+        notes: [],
+      },
+      {
+        notes: [],
+      },
+      {
+        notes: [],
+      },
+      {
+        notes: [],
+      },
+    ],
+  };
+
+  const chordProgression = ['Cmaj7', 'Fmaj7', 'G7', 'Cmaj7'];
+  const pitches = [60, 64, 67, 72, 76, 79, 84];
+
+  let startTime = 0;
+  let duration = 0;
+
+  for (let i = 0; i < chordProgression.length; i++) {
+    for (let j = 0; j < 16; j++) {
+      duration = Math.floor(Math.random() * 4) + 1;
+
+      midiScore.tracks[0].notes.push({
+        pitch: pitches[Math.floor(Math.random() * pitches.length)],
+        duration: duration,
+        startTime: startTime,
+      });
+
+      midiScore.tracks[1].notes.push({
+        pitch: pitches[Math.floor(Math.random() * pitches.length)],
+        duration: duration,
+        startTime: startTime,
+      });
+
+      midiScore.tracks[2].notes.push({
+        pitch: pitches[Math.floor(Math.random() * pitches.length)],
+        duration: duration,
+        startTime: startTime,
+      });
+
+      midiScore.tracks[3].notes.push({
+        pitch: pitches[Math.floor(Math.random() * pitches.length)],
+        duration: duration,
+        startTime: startTime,
+      });
+
+      startTime += duration;
+    }
+  }
+
+  return midiScore;
+}
+
+generateMIDIScore();

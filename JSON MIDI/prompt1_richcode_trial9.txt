@@ -1,0 +1,16 @@
+function generateMidiScore() {
+  const tracks = [];
+  for (let i = 0; i < 4; i++) {
+    const notes = [];
+    for (let j = 0; j < 8; j++) {
+      const pitch = Math.floor(Math.random() * 900) + 100;
+      const duration = Math.floor(Math.random() * 4) + 1;
+      const startTime = j * 2;
+      notes.push({ pitch, duration, startTime });
+    }
+    tracks.push({ notes });
+  }
+  return { tracks };
+}
+
+generateMidiScore();

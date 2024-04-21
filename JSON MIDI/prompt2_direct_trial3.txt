@@ -1,0 +1,28 @@
+{
+  "tracks": {
+    "soprano": [
+      {"pitch": "G4", "duration": 4, "startTime": 0},
+      {"pitch": "F4", "duration": 4, "startTime": 4},
+      {"pitch": "E4", "duration": 4, "startTime": 8},
+      {"pitch": "D4", "duration": 4, "startTime": 12}
+    ],
+    "alto": [
+      {"pitch": "C4", "duration": 4, "startTime": 0},
+      {"pitch": "E4", "duration": 4, "startTime": 4},
+      {"pitch": "F4", "duration": 4, "startTime": 8},
+      {"pitch": "D4", "duration": 4, "startTime": 12}
+    ],
+    "tenor": [
+      {"pitch": "G3", "duration": 4, "startTime": 0},
+      {"pitch": "B3", "duration": 4, "startTime": 4},
+      {"pitch": "C4", "duration": 4, "startTime": 8},
+      {"pitch": "A3", "duration": 4, "startTime": 12}
+    ],
+    "bass": [
+      {"pitch": "D3", "duration": 4, "startTime": 0},
+      {"pitch": "F3", "duration": 4, "startTime": 4},
+      {"pitch": "E3", "duration": 4, "startTime": 8},
+      {"pitch": "D3", "duration": 4, "startTime": 12}
+    ]
+  }
+}

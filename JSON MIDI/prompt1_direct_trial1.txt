@@ -1,0 +1,23 @@
+{
+ "tempo": 120,
+ "timeSignature": [4, 4],
+ "key": "C",
+ "tracks": [
+ {
+ "instrument": "cello",
+ "notes": [
+ { "pitch": "C4", "startTime": 0, "duration": 1 },
+ { "pitch": "E4", "startTime": 1, "duration": 1 },
+ { "pitch": "G4", "startTime": 2, "duration": 1 },
+ { "pitch": "C5", "startTime": 3, "duration": 1 }
+ ]
+ },
+ {
+ "instrument": "violin",
+ "notes": [
+ { "pitch": "E4", "startTime": 0, "duration": 2 },
+ { "pitch": "G4", "startTime": 2, "duration": 2 }
+ ]
+ }
+ ]
+}

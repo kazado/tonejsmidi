@@ -1,0 +1,36 @@
+function generateMIDIScore() {
+  const midiScore = {
+    tracks: [
+      {
+        notes: []
+      },
+      {
+        notes: []
+      }
+    ]
+  };
+
+  for (let i = 0; i < 16; i++) {
+    const pitch1 = Math.floor(Math.random() * 88) + 21;
+    const pitch2 = Math.floor(Math.random() * 88) + 21;
+    const duration1 = Math.floor(Math.random() * 4) + 1;
+    const duration2 = Math.floor(Math.random() * 4) + 1;
+    const startTime = i * 0.5;
+
+    midiScore.tracks[0].notes.push({
+      pitch: pitch1,
+      duration: duration1,
+      startTime: startTime
+    });
+
+    midiScore.tracks[1].notes.push({
+      pitch: pitch2,
+      duration: duration2,
+      startTime: startTime
+    });
+  }
+
+  return midiScore;
+}
+
+generateMIDIScore();

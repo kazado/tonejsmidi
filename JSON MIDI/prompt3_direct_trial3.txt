@@ -1,0 +1,32 @@
+{
+  "tracks": [
+    {
+      "notes": [
+        {"pitch": "C4", "duration": 4, "startTime": 0},
+        {"pitch": "E4", "duration": 2, "startTime": 4},
+        {"pitch": "D4", "duration": 2, "startTime": 6},
+        {"pitch": "G4", "duration": 3, "startTime": 8},
+        {"pitch": "F4", "duration": 1, "startTime": 11},
+        {"pitch": "C4", "duration": 2, "startTime": 12},
+        {"pitch": "D4", "duration": 2, "startTime": 14},
+        {"pitch": "E4", "duration": 2, "startTime": 16},
+        {"pitch": "G4", "duration": 2, "startTime": 18},
+        {"pitch": "C4", "duration": 4, "startTime": 20},
+        {"pitch": "E4", "duration": 2, "startTime": 24},
+        {"pitch": "D4", "duration": 2, "startTime": 26},
+        {"pitch": "G4", "duration": 3, "startTime": 28},
+        {"pitch": "F4", "duration": 1, "startTime": 31}
+      ]
+    },
+    {
+      "notes": [
+        {"pitch": "C3", "duration": 4, "startTime": 0},
+        {"pitch": "E3", "duration": 2, "startTime": 4},
+        {"pitch": "D3", "duration": 2, "startTime": 6},
+        {"pitch": "G3", "duration": 3, "startTime": 8},
+        {"pitch": "F3", "duration": 1, "startTime": 11},
+        {"pitch": "C3", "duration": 2, "startTime": 12},
+        {"pitch": "D3", "duration": 2, "startTime": 14},
+        {"pitch": "E3", "duration": 2, "startTime": 16},
+        {"pitch": "G3", "duration": 2, "startTime": 18},
+        {"pitch": "C3", "duration": 4, "startTime

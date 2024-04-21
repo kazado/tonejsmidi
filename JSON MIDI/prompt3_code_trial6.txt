@@ -1,0 +1,38 @@
+function generateMIDIScore() {
+  const midiScore = {
+    "header": {
+      "ppq": 480,
+      "timeSignature": [4, 4],
+      "tempos": [
+        {
+          "time": 0,
+          "bpm": 120
+        }
+      ]
+    },
+    "tracks": [
+      {
+        "notes": [
+          {"pitch": "C4", "startTime": 0, "duration": 480},
+          {"pitch": "E4", "startTime": 480, "duration": 240},
+          {"pitch": "G4", "startTime": 720, "duration": 240},
+          {"pitch": "C5", "startTime": 960, "duration": 240},
+          {"pitch": "E5", "startTime": 1200, "duration": 720}
+        ]
+      },
+      {
+        "notes": [
+          {"pitch": "G3", "startTime": 0, "duration": 480},
+          {"pitch": "B3", "startTime": 480, "duration": 480},
+          {"pitch": "D4", "startTime": 960, "duration": 480},
+          {"pitch": "F4", "startTime": 1440, "duration": 480},
+          {"pitch": "G4", "startTime": 1920, "duration": 480}
+        ]
+      }
+    ]
+  };
+
+  return midiScore;
+}
+
+generateMIDIScore();

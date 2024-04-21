@@ -1,0 +1,24 @@
+function generateMIDIScore() {
+  const midiScore = {
+    tracks: [
+      {
+        notes: [
+          { pitch: "C4", duration: 0.5, startTime: 0 },
+          { pitch: "E4", duration: 0.5, startTime: 0.5 },
+          { pitch: "G4", duration: 1, startTime: 1 }
+        ]
+      },
+      {
+        notes: [
+          { pitch: "C3", duration: 0.5, startTime: 0 },
+          { pitch: "E3", duration: 0.5, startTime: 0.5 },
+          { pitch: "G3", duration: 1, startTime: 1 }
+        ]
+      }
+    ]
+  };
+
+  return midiScore;
+}
+
+generateMIDIScore();

@@ -1,0 +1,25 @@
+function generateMIDIScore() {
+  const midiScore = {
+    "tracks": [
+      {
+        "notes": [
+          { "pitch": "C4", "startTime": 0, "duration": 1 },
+          { "pitch": "E4", "startTime": 1, "duration": 1 },
+          { "pitch": "G4", "startTime": 2, "duration": 1 },
+          { "pitch": "C5", "startTime": 3, "duration": 1 }
+        ]
+      },
+      {
+        "notes": [
+          { "pitch": "C3", "startTime": 0, "duration": 1 },
+          { "pitch": "E3", "startTime": 1, "duration": 1 },
+          { "pitch": "G3", "startTime": 2, "duration": 1 },
+          { "pitch": "C4", "startTime": 3, "duration": 1 }
+        ]
+      }
+    ]
+  };
+  return midiScore;
+}
+
+generateMIDIScore();

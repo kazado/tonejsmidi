@@ -1,0 +1,50 @@
+function generateMIDIScore() {
+  let midiScore = {
+    "tracks": [
+      {
+        "notes": []
+      },
+      {
+        "notes": []
+      },
+      {
+        "notes": []
+      },
+      {
+        "notes": []
+      }
+    ]
+  };
+
+  for (let i = 0; i < 16; i++) {
+    let startTime = i * 2;
+
+    midiScore.tracks[0].notes.push({
+      "pitch": Math.floor(Math.random() * 1000),
+      "duration": Math.floor(Math.random() * 4) + 1,
+      "startTime": startTime
+    });
+
+    midiScore.tracks[1].notes.push({
+      "pitch": Math.floor(Math.random() * 1000),
+      "duration": Math.floor(Math.random() * 4) + 1,
+      "startTime": startTime
+    });
+
+    midiScore.tracks[2].notes.push({
+      "pitch": Math.floor(Math.random() * 1000),
+      "duration": Math.floor(Math.random() * 4) + 1,
+      "startTime": startTime
+    });
+
+    midiScore.tracks[3].notes.push({
+      "pitch": Math.floor(Math.random() * 1000),
+      "duration": Math.floor(Math.random() * 4) + 1,
+      "startTime": startTime
+    });
+  }
+
+  return midiScore;
+}
+
+generateMIDIScore();

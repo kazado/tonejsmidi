@@ -1,0 +1,47 @@
+const generateMIDIScore = () => {
+  const midiScore = {
+    header: {
+      PPQ: 480,
+      timeSignature: [4, 4],
+      bpm: 120
+    },
+    tracks: [
+      {
+        notes: [
+          { pitch: "C4", duration: "4n", startTime: 0 },
+          { pitch: "E4", duration: "4n", startTime: "4n" },
+          { pitch: "G4", duration: "4n", startTime: "2n" },
+          { pitch: "C5", duration: "4n", startTime: "3n" }
+        ]
+      },
+      {
+        notes: [
+          { pitch: "G3", duration: "4n", startTime: 0 },
+          { pitch: "B3", duration: "4n", startTime: "4n" },
+          { pitch: "D4", duration: "4n", startTime: "2n" },
+          { pitch: "F#4", duration: "4n", startTime: "3n" }
+        ]
+      },
+      {
+        notes: [
+          { pitch: "E3", duration: "4n", startTime: 0 },
+          { pitch: "G3", duration: "4n", startTime: "4n" },
+          { pitch: "C4", duration: "4n", startTime: "2n" },
+          { pitch: "E4", duration: "4n", startTime: "3n" }
+        ]
+      },
+      {
+        notes: [
+          { pitch: "C3", duration: "4n", startTime: 0 },
+          { pitch: "E3", duration: "4n", startTime: "4n" },
+          { pitch: "G3", duration: "4n", startTime: "2n" },
+          { pitch: "C4", duration: "4n", startTime: "3n" }
+        ]
+      }
+    ]
+  };
+
+  return midiScore;
+};
+
+generateMIDIScore();

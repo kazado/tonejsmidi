@@ -1,0 +1,37 @@
+function generateMIDIScore() {
+  let midiScore = {
+    tracks: [
+      {
+        notes: [],
+      },
+      {
+        notes: [],
+      },
+    ],
+  };
+
+  for (let i = 0; i < 16; i++) {
+    let pitch = Math.floor(Math.random() * 88) + 21; // MIDI pitch range
+    let duration = Math.floor(Math.random() * 4) + 1; // Duration in beats
+    let startTime = i * 0.5; // Start time in beats
+
+    // Assign notes to each hand
+    if (i % 2 === 0) {
+      midiScore.tracks[0].notes.push({
+        pitch: pitch,
+        duration: duration,
+        startTime: startTime,
+      });
+    } else {
+      midiScore.tracks[1].notes.push({
+        pitch: pitch,
+        duration: duration,
+        startTime: startTime,
+      });
+    }
+  }
+
+  return midiScore;
+}
+
+generateMIDIScore();

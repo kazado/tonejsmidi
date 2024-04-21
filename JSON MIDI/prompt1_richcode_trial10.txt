@@ -1,0 +1,17 @@
+function generateMIDIScore() {
+  const tracks = [];
+  for (let i = 0; i < 4; i++) {
+    const notes = [];
+    for (let j = 0; j < 4; j++) {
+      notes.push({
+        pitch: Math.floor(Math.random() * 1000) + 100,
+        duration: Math.floor(Math.random() * 4) + 1,
+        startTime: Math.floor(Math.random() * 4)
+      });
+    }
+    tracks.push({ notes });
+  }
+  return { tracks };
+}
+
+generateMIDIScore();

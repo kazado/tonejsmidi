@@ -1,0 +1,21 @@
+const trackCount = 3;
+  const notesPerTrack = 4;
+  const midiScore = {
+    tracks: []
+  };
+
+  for (let i = 0; i < trackCount; i++) {
+    const track = {
+      notes: []
+    };
+    for (let j = 0; j < notesPerTrack; j++) {
+      const pitch = Math.floor(Math.random() * 901) + 100;
+      const duration = Math.floor(Math.random() * 4) + 1;
+      const startTime = j * 4;
+      track.notes.push({ pitch, duration, startTime });
+    }
+    midiScore.tracks.push(track);
+  }
+
+  return midiScore;
+}
