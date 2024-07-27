@@ -1,57 +1,127 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Tonejs Midi</title>
-	<script type="text/javascript" src="https://unpkg.com/@tonejs/midi"></script>
-	<script type="text/javascript" src="https://unpkg.com/tone@13.4.9"></script>
-	<script type="text/javascript" src="https://unpkg.com/@tonejs/ui@0.0.8"></script>
+    <title>Tone.js MIDI Generator</title>
+    <script type="text/javascript" src="https://unpkg.com/@tonejs/midi"></script>
+    <script type="text/javascript" src="https://unpkg.com/tone@13.4.9"></script>
+    <script type="text/javascript" src="https://unpkg.com/@tonejs/ui@0.0.8"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@tonejs/midi"></script>
+	<script src="https://cdn.jsdelivr.net/npm/midiwriter-js"></script>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 400px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .slider {
+            margin: 20px 0;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+        }
+
+        .api-key-input {
+            margin-bottom: 20px;
+        }
+
+        .api-key-input input {
+            width: calc(100% - 24px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .api-key-input label {
+            display: block;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #Status {
+            color: gray;
+            height: 40px;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        tone-top-bar {
+            margin-bottom: 20px;
+        }
+		
+		#downloadButton {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-	<style>
-		#Status {
-			color: gray;
-			height: 40px;
-		}
+    <div class="container">
+        <h1>Tone.js MIDI Generator</h1>
+        <tone-top-bar></tone-top-bar>
 
-		body {
-  font-family: Arial, sans-serif;
-}
-
-.container {
-  margin: 50px auto;
-  text-align: center;
-}
-
-.slider {
-  margin-bottom: 20px;
-}
-
-
-#Status {
-  margin-top: 20px;
-  font-style: italic;
-}
-
-	</style>
-	<tone-top-bar></tone-top-bar>
-
-	<tone-content>
-		<div id="Status">Loading...</div>
-		<tone-play-toggle disabled>Loading...</tone-play-toggle>
-	</tone-content>
-	<div class="slider-labels">
-        <span>Direct Generation | Code Generation</span>
-    </div>
-	<div class="slider">
-		<input type="range" min="0" max="1" step="1" value="0" id="slider">
+        <tone-content>
+            <div id="Status">Loading...</div>
+            <tone-play-toggle disabled>Loading...</tone-play-toggle>
+        </tone-content>
         
-	  </div>
-	  <div class="api-key-input">
-        <label for="apiKey">Enter your API key:</label>
-        <input type="text" id="apiKey" name="apiKey" required>
-    </div>
-	  <button id="startButton">Start Generation</button>
-	<script type="text/javascript" src="./main.js"></script>
+        <div class="slider-labels">
+            <span>Direct Generation</span>
+            <span>Code Generation</span>
+        </div>
+        <div class="slider">
+            <input type="range" min="0" max="1" step="1" value="0" id="slider">
+        </div>
 
+        <div class="api-key-input">
+            <label for="apiKey">Enter your API key:</label>
+            <input type="text" id="apiKey" name="apiKey" required>
+        </div>
+        
+        <button id="startButton">Start Generation</button>
+		<br>
+		<button id="downloadButton">Download MIDI</button>
+    </div>
+	
+
+    <script type="text/javascript" src="./main.js"></script>
 </body>
 </html>
