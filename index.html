@@ -1,126 +1,235 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tone.js MIDI Generator</title>
+    <title>LLM Music Generator</title>
     <script type="text/javascript" src="https://unpkg.com/@tonejs/midi"></script>
     <script type="text/javascript" src="https://unpkg.com/tone@13.4.9"></script>
     <script type="text/javascript" src="https://unpkg.com/@tonejs/ui@0.0.8"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@tonejs/midi"></script>
-	<script src="https://cdn.jsdelivr.net/npm/midiwriter-js"></script>
-	<style>
+    <script src="https://cdn.jsdelivr.net/npm/midiwriter-js"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.18.0"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lobster&display=swap" rel="stylesheet">
+    <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Lobster', cursive;
+            background-color: #e0f7fa;
             margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            color: #333;
         }
 
         .container {
             background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 400px;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
         }
 
         h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .slider {
-            margin: 20px 0;
+            font-size: 32px;
+            margin-bottom: 24px;
+            color: #00796b;
         }
 
         .slider-labels {
             display: flex;
-            justify-content: space-between;
-            color: #666;
+            justify-content: space-around;
+            gap: 10px;
+            color: #00796b;
+            margin-bottom: 10px;
+            margin-top: 150px;
+            font-size: 20px;
+            width: 60%;
+            margin: 0 auto 0px; 
+        }   
+        
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin: 20px 0;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #00796b;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
         }
 
         .api-key-input {
             margin-bottom: 20px;
+            text-align: left;
         }
 
         .api-key-input input {
-            width: calc(100% - 24px);
+            width: calc(100% - 20px);
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
+            margin-top: 5px;
+            transition: border 0.3s ease;
+        }
+
+        .api-key-input input:focus {
+            border-color: #00796b;
         }
 
         .api-key-input label {
             display: block;
-            margin-bottom: 10px;
-            color: #666;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #00796b;
+            font-family: 'Roboto', sans-serif;
         }
 
+        .input {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 5px;
+    transition: border 0.3s ease;
+}
+
+.input input:focus {
+    border-color: #00796b;
+}
+
+.input label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #00796b;
+    font-family: 'Roboto', sans-serif;
+}
+
         button {
-            background-color: #007BFF;
+            background-color: #00796b;
             color: #fff;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease, transform 0.2s;
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #004d40;
+            transform: translateY(-2px);
         }
 
         #Status {
-            color: gray;
+            color: #888;
             height: 40px;
             margin-top: 20px;
             font-style: italic;
+            font-family: 'Roboto', sans-serif;
         }
 
-        tone-top-bar {
-            margin-bottom: 20px;
-        }
-		
-		#downloadButton {
+        #downloadButton {
             display: none;
             margin-top: 20px;
+        }
+
+        midi-visualizer {
+            margin-top: 20px;
+        }
+
+        #midiPlayer {
+            display: none;
+            margin: 0 auto;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Tone.js MIDI Generator</h1>
-        <tone-top-bar></tone-top-bar>
-
-        <tone-content>
-            <div id="Status">Loading...</div>
-            <tone-play-toggle disabled>Loading...</tone-play-toggle>
-        </tone-content>
-        
+        <h1>Large Language Model Music Generator</h1>
+        <br>
+        <br>
         <div class="slider-labels">
             <span>Direct Generation</span>
             <span>Code Generation</span>
         </div>
-        <div class="slider">
-            <input type="range" min="0" max="1" step="1" value="0" id="slider">
-        </div>
+        <label class="toggle-switch">
+            <input type="checkbox" id="toggle">
+            <span class="slider"></span>
+        </label>
 
         <div class="api-key-input">
             <label for="apiKey">Enter your API key:</label>
             <input type="text" id="apiKey" name="apiKey" required>
         </div>
+
+        <div class="input">
+            <label>Musical Style:</label>
+            <input type="text" id="input" required>
+        </div>
         
         <button id="startButton">Start Generation</button>
-		<br>
-		<button id="downloadButton">Download MIDI</button>
+        <br>
+
+        <!-- <tone-content>
+            <div id="Status">Loading...</div>
+            <tone-play-toggle disabled>Loading...</tone-play-toggle>
+        </tone-content> -->
+        <br>
+        <midi-player id="midiPlayer" sound-font visualizer="#myVisualizer"></midi-player>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <br>
+        <button id="downloadButton">Download MIDI</button>
+        
     </div>
-	
 
     <script type="text/javascript" src="./main.js"></script>
 </body>
