@@ -2,9 +2,9 @@ async function generateCode() {
     const style = document.getElementById('input').value;
     let prompt = [
         { role: "system", content: "You write js code that ends with a return of the result. call the function at the end. do not include comments. do not include markdown formatting, and do not include the string javascript at the beginning of the code. do not enclose the code in quotes. You're tasked with creating a JavaScript function that generates a MIDI score in JSON format, playable by Tone.js. The function should return the MIDI score as a JSON object. Make sure the JSON structure is compatible with Tone.js for playback." },
-        { role: "assistant", content: "Write a function in js with a 16 beat complex piano piece with two hands with syncopated rhythms and varied notes in this musical style: " + style +  " labelled as \"tracks\" with each voice labelled as \"notes\" including pitch, duration, startTime in json notation. The pitch should be a note name, duration and startTime should be only numerical integers."}
+        { role: "assistant", content: "Write a function in js with a 16 beat MIDI JSON complex piano piece with two hands with syncopated rhythms and varied notes in this musical style: " + style + " labelled as \"tracks\" with each voice labelled as \"notes\" including pitch, duration, startTime in json notation. The pitch should be a note name, duration and startTime should be only numerical integers."}
     ];
-    const apiKey = document.getElementById('apiKey').value;
+    const apiKey = '';
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -12,9 +12,9 @@ async function generateCode() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            model: 'gpt-3.5-turbo-1106',
+            model: 'gpt-4o',
             messages: prompt,
-            max_tokens: 500,
+            max_tokens: 1000,
         })
     });
     const data = await response.json();
@@ -38,10 +38,10 @@ function createSynth() {
 async function generateMidiJson() {
     const style = document.getElementById('input').value;
     const url = 'https://api.openai.com/v1/chat/completions'
-    const apiKey = document.getElementById('apiKey').value;
+    const apiKey = '';
     const bearer = 'Bearer ' + apiKey;
     let prompt = [
-        { role: "system", content: "You are a composer of classical music. You generate a 16 beat complex piano piece with two hands with syncopated rhythms and varied notes midi scores in json notation in this style: " + style + "labelled as \"tracks\" with each voice labelled as \"notes\" including pitch, duration, startTime in json notation. The pitch should be a note name and duration and startTime should be numerical integers." },
+        { role: "system", content: "You are a composer of classical music. You generate a 16 beat complex piano piece with two hands with syncopated rhythms and varied notes midi scores in json notation in this style: " + style + " labelled as \"tracks\" with each voice labelled as \"notes\" including pitch, duration, startTime in json notation. The pitch should be a note name and duration and startTime should be numerical integers." },
         { role: "assistant", content: "Generate json music" }
     ];
 
@@ -52,9 +52,9 @@ async function generateMidiJson() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            model: 'gpt-3.5-turbo-1106',
+            model: 'gpt-4o',
             messages: prompt,
-            max_tokens: 500,
+            max_tokens: 1000,
             response_format: { type: "json_object" }
         }),
     }).then(response => {
@@ -80,6 +80,7 @@ async function loadJson(generateMidi) {
     }
 
     const midiPlayer = document.getElementById('midiPlayer');
+    const visualizer = document.getElementById('myVisualizer');
     const midiFile = new Midi();
     midiJson.tracks.forEach(track => {
         const midiTrack = midiFile.addTrack();
@@ -97,6 +98,10 @@ async function loadJson(generateMidi) {
     const url = URL.createObjectURL(blob);
     midiPlayer.setAttribute('src', url);
     midiPlayer.style.display = 'block'; 
+
+    visualizer.setAttribute('midiFile', midiPlayer);
+    visualizer.style.display = 'block';
+    
     return midiJson;
 }
 
@@ -113,8 +118,7 @@ function startPlayback() {
     Tone.start();
     loadJson(generateMidi).then(openaiGeneratedJson => {
         const synths = [];
-        // document.querySelector('tone-play-toggle').removeAttribute('disabled');
-        // document.querySelector('#Status').textContent = '';
+        const visualizer = document.getElementById('myVisualizer');
 
         document.querySelector('tone-play-toggle').addEventListener('play', (e) => {
             const playing = e.detail;
